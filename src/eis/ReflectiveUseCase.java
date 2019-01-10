@@ -4,12 +4,17 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 public class ReflectiveUseCase {
-    private final static Set<Class<?>> versions = new HashSet<>();
+    private final static List<Class<?>> versions = new ArrayList<>();
 
     static {
 	try {
+	    versions.add(Class.forName("eis.novice.Container"));
 	    versions.add(Class.forName("eis.reference.Container"));
 	    versions.add(Class.forName("eis.speed1.Container"));
+	    versions.add(Class.forName("eis.speed2.Container"));
+	    versions.add(Class.forName("eis.speed3.Container"));
+	    versions.add(Class.forName("eis.memory1.Container"));
+	    versions.add(Class.forName("eis.memory2.Container"));
 	} catch (ClassNotFoundException e) {
 	    e.printStackTrace();
 	}
