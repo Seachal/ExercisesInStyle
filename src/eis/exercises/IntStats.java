@@ -1,3 +1,5 @@
+package eis.exercises;
+
 /* Chapter 4, exercise 3.
  *
  * Version where insert and getAverage work in constant time.

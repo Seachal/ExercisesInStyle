@@ -1,4 +1,9 @@
+package eis.exercises;
+
 import java.util.*;
+
+
+/* Chapter 6 */
 
 public class InterleaveLists {
 
