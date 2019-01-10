@@ -1,0 +1,5 @@
+*~
+# ignore bytecode
+*.class
+# ignore javadoc generated docs
+/docs
