@@ -1,10 +1,14 @@
+package eis.exercises;
+
 public class Appliance {
     private final int powerAbsorbed;
     private Grid grid;
     private boolean isOn;
+
     public Appliance(int powerAbsorbed) {
 	this.powerAbsorbed = powerAbsorbed;
     }
+
     public void plugInto(Grid otherGrid) {
 	if (grid!=null && isOn)
 	    grid.addPower(powerAbsorbed);
@@ -12,6 +16,7 @@ public class Appliance {
 	if (isOn)
 	    otherGrid.addPower(-powerAbsorbed);
     }
+
     public void on() {
 	if (grid==null)
 	    throw new IllegalStateException("Cannot turn on when unconnected to any grid.");
@@ -20,6 +25,7 @@ public class Appliance {
 	    isOn = true;
 	}
     }
+
     public void off() {
 	if (grid!=null && isOn) {
 	    grid.addPower(powerAbsorbed);

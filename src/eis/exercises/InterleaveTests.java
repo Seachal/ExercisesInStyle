@@ -1,3 +1,7 @@
+package eis.exercises;
+
+/* Chapter 6 */
+
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -5,9 +9,9 @@ import org.junit.Before;
 
 import java.util.*;
 
-// To run these tests from the command line:
-// javac -cp .:libs/junit-4.12.jar:libs/hamcrest-core-1.3.jar InterleaveTests.java
-// java  -cp .:libs/junit-4.12.jar:libs/hamcrest-core-1.3.jar org.junit.runner.JUnitCore InterleaveTests
+// To run these tests from the command line, in folder /src:
+//   javac -cp .:../libs/junit-4.12.jar eis/exercises/InterleaveTests.java
+//   java  -cp .:../libs/junit-4.12.jar:../libs/hamcrest-core-1.3.jar org.junit.runner.JUnitCore eis.exercises.InterleaveTests
 
 public class InterleaveTests {
 

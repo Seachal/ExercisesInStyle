@@ -1,3 +1,5 @@
+package eis.exercises;
+
 public class Grid {
     private final int maxPower;
     private int residualPower;
