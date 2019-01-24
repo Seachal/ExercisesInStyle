@@ -1,4 +1,4 @@
-package eis.memory4;
+package eis.memory5;
 
 import java.util.Arrays;
 
@@ -28,9 +28,8 @@ public class Container {
     /** Returns the amount of water in the specified container.
      */
     public static float getAmount(int containerID) {
-        while (nextOrAmount[containerID]>0)
-            containerID = (int)nextOrAmount[containerID] -1;
-        return -nextOrAmount[containerID];
+	int[] lastAndSize  = findLastOfGroupAndCount(containerID);
+        return -nextOrAmount[lastAndSize[0]];
     }
 
     /** Adds the specified amount of water to the specified container.
@@ -57,7 +56,8 @@ public class Container {
             newAmount = ((amount1 * lastAndSize1[1]) + (amount2 * lastAndSize2[1]))
             / (lastAndSize1[1] + lastAndSize2[1]);
 
-        nextOrAmount[last1] = first2 + 1; // concatenation
+	// concatenate the groups
+        nextOrAmount[last1] = encodeSuccessorIndex(first2); 
         nextOrAmount[last2] = -newAmount;
     }
 
@@ -69,8 +69,19 @@ public class Container {
         System.out.println("]");
     }
     
+    // PRIVATE METHODS //
+    
     // Prevents instantiation
     private Container() {}
+
+    private static float encodeSuccessorIndex(int next) {
+	return Float.intBitsToFloat(next +1);
+    }
+
+    private static int decodeSuccessorIndex(float next) {
+	assert next>0;
+	return Float.floatToRawIntBits(next) -1;
+    }
 
     /** Returns the index of the first container in the same group of containerID.
      *  Warning: quadratic time complexity.
@@ -79,7 +90,7 @@ public class Container {
         int current = containerID, i = 0;
         do {
             for (i=0; i<nextOrAmount.length; i++)
-                if (nextOrAmount[i] == current+1) {
+                if (nextOrAmount[i] == encodeSuccessorIndex(current)) {
                     current = i;
                     break;
                 }
@@ -94,7 +105,7 @@ public class Container {
     private static int[] findLastOfGroupAndCount(int containerID) {
         int[] result = new int[] { containerID, 1 };
         while (nextOrAmount[result[0]]>0) {
-            result[0] = (int) nextOrAmount[result[0]] -1;
+            result[0] = decodeSuccessorIndex(nextOrAmount[result[0]]);
             result[1]++;
         }       
         return result;
