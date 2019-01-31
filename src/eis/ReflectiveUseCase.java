@@ -4,23 +4,29 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 public class ReflectiveUseCase {
+
+    private static List<String> classNames = List.of(
+                                                     "eis.novice.Container",
+                                                     "eis.reference.Container",
+                                                     "eis.speed1.Container",
+                                                     "eis.speed2.Container",
+                                                     "eis.speed3.Container",
+                                                     "eis.speed3compact.Container",
+                                                     "eis.memory1.Container",
+                                                     "eis.memory2.Container",
+                                                     "eis.contracts.Container",
+                                                     "eis.invariants.Container",
+                                                     "eis.readable.Container");
     private final static List<Class<?>> versions = new ArrayList<>();
 
     static {
-        try {
-            versions.add(Class.forName("eis.novice.Container"));
-            versions.add(Class.forName("eis.reference.Container"));
-            versions.add(Class.forName("eis.speed1.Container"));
-            versions.add(Class.forName("eis.speed2.Container"));
-            versions.add(Class.forName("eis.speed3.Container"));
-            versions.add(Class.forName("eis.memory1.Container"));
-            versions.add(Class.forName("eis.memory2.Container"));
-            versions.add(Class.forName("eis.contracts.Container"));
-            versions.add(Class.forName("eis.invariants.Container"));
-            versions.add(Class.forName("eis.readable.Container"));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        for (String className: classNames)
+            try {
+                versions.add(Class.forName(className));
+            } catch (ClassNotFoundException e) {
+                System.out.println("Cannot find class " + className + " (perhaps you did not compile it). Skipping it.");
+                continue;
+            }
     }
 
     public static void main(String...args) throws ReflectiveOperationException {
@@ -39,7 +45,8 @@ public class ReflectiveUseCase {
                 for (int i=0; i<NUM_CONTAINERS; i++)
                     container[i] = c.getDeclaredConstructor().newInstance();
             } catch (ReflectiveOperationException e) {
-                System.out.println("Skipping this class due to a reflective error:" + e);
+                System.out.println("Skipping this class due to a reflective error:" 
+                                   + e + " (" + e.getCause() + ")");
                 continue;
             }
                 
