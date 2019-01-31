@@ -4,10 +4,14 @@
 These are the source files for the book project "Java: Exercises in Style",
 currently under development for Manning.
 
-Classes with "main" method:
+Most source files are different versions of the same `Container` class.
+So, they are all called `Container` but sit in different packages.
+For example, `eis.reference.Container` is the reference version.
 
-* `eis.UseCase` runs the standard use case on Reference (you may change the import line to run it against other versions)
- * `eis.ReflectiveUseCase` runs the standard use case on all compatible container versions
+Classes with a "main" method:
+
+ * `eis.UseCase` runs the standard use case on Reference (you may change the import line to run it against other versions)
+ * `eis.ReflectiveUseCase` runs the standard use case on all compatible container versions (you must compile those versions first)
  * `eis.Memory3.UseCase` runs the standard use case on Memory3 (object-less API)
  * `eis.Memory4.UseCase` runs the standard use case on Memory4 (object-less API)
 
