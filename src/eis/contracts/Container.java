@@ -25,11 +25,10 @@ public class Container {
     public void connectTo(Container other) {
         // Pre-condition
         Objects.requireNonNull(other, "Cannot connect to a null container.");
+        if (group==other.group) return;
 
         ConnectPostData postData = null;
         assert (postData = saveConnectPostData(other)) != null;
-
-        if (group==other.group) return;
 
         int size1 = group.size(),
             size2 = other.group.size();
