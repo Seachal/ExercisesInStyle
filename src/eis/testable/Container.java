@@ -15,8 +15,8 @@ public class Container {
        to represent groups of connected containers. */
     public Container(Class<? extends Set<Container>> setType)
         throws ReflectiveOperationException {
-        group = (Set<Container>) setType.getDeclaredConstructor()
-                                        .newInstance();
+        group = setType.getDeclaredConstructor()
+                       .newInstance();
         group.add(this);
     }
 
