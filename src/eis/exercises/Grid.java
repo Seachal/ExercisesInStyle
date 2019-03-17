@@ -5,14 +5,14 @@ public class Grid {
     private int residualPower;
     
     public Grid(int maxPower) {
-	this.residualPower = this.maxPower = maxPower;
+        this.residualPower = this.maxPower = maxPower;
     }
     public int residualPower() {
-	return residualPower;
+        return residualPower;
     }
     void addPower(int power) {
-	if (residualPower + power < 0)
-	    throw new IllegalArgumentException("Not enough power.");
-	residualPower += power;
+        if (residualPower + power < 0)
+            throw new IllegalArgumentException("Not enough power.");
+        residualPower += power;
     }
 }

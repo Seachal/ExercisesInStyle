@@ -58,13 +58,13 @@ public class Container {
         group.addAll(otherGroup);
         for (Container x: otherGroup) {
             x.group = group;
-	}
+        }
     }
 
     private void setAllAmountsTo(double amount) {
         for (Container x: group) {
             x.amount = amount;
-	}
+        }
     }
 
     /** Checks whether this container is connected to anoher one.
@@ -104,6 +104,6 @@ public class Container {
         double amountPerContainer = amount / group.size();
         for (Container c: group) {
             c.amount += amountPerContainer;
-	}
+        }
     }
 }

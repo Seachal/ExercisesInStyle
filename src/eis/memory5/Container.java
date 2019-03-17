@@ -28,7 +28,7 @@ public class Container {
     /** Returns the amount of water in the specified container.
      */
     public static float getAmount(int containerID) {
-	int[] lastAndSize  = findLastOfGroupAndCount(containerID);
+        int[] lastAndSize  = findLastOfGroupAndCount(containerID);
         return -nextOrAmount[lastAndSize[0]];
     }
 
@@ -56,8 +56,8 @@ public class Container {
             newAmount = ((amount1 * lastAndSize1[1]) + (amount2 * lastAndSize2[1]))
             / (lastAndSize1[1] + lastAndSize2[1]);
 
-	// concatenate the groups
-        nextOrAmount[last1] = encodeSuccessorIndex(first2); 
+        // concatenate the groups
+        nextOrAmount[last1] = encodeSuccessorIndex(first2);
         nextOrAmount[last2] = -newAmount;
     }
 
@@ -68,19 +68,19 @@ public class Container {
         }
         System.out.println("]");
     }
-    
+
     // PRIVATE METHODS //
-    
+
     // Prevents instantiation
     private Container() {}
 
     private static float encodeSuccessorIndex(int next) {
-	return Float.intBitsToFloat(next +1);
+        return Float.intBitsToFloat(next +1);
     }
 
     private static int decodeSuccessorIndex(float next) {
-	assert next>0;
-	return Float.floatToRawIntBits(next) -1;
+        assert next>0;
+        return Float.floatToRawIntBits(next) -1;
     }
 
     /** Returns the index of the first container in the same group of containerID.
@@ -107,7 +107,7 @@ public class Container {
         while (nextOrAmount[result[0]]>0) {
             result[0] = decodeSuccessorIndex(nextOrAmount[result[0]]);
             result[1]++;
-        }       
+        }
         return result;
     }
 }

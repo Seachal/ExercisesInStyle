@@ -13,36 +13,36 @@ public class Container {
     private Container next = this;
     
     public void connectTo(Container other) {
-	Container oldNext = next;
-	next = other.next;
-	other.next = oldNext;
+        Container oldNext = next;
+        next = other.next;
+        other.next = oldNext;
     }
     
     public void addWater(double amount) {
-	this.amount += amount;
+        this.amount += amount;
     }
 
     public double getAmount() {
-	updateGroup();
-	return amount; 
+        updateGroup();
+        return amount; 
     }
     private void updateGroup() {
-	Container cur = this;
-	double totalAmount = 0;
-	int groupSize = 0;
-	// First pass: collect amounts and count
-	do {
-	    totalAmount += cur.amount;
-	    groupSize++;
-	    cur = cur.next;
-	} while (cur != this);
-	double newAmount = totalAmount / groupSize;
-	cur = this;
-	// Second pass: update amounts
-	do {
-	    cur.amount = newAmount;
-	    cur = cur.next;
-	} while (cur != this);
+        Container cur = this;
+        double totalAmount = 0;
+        int groupSize = 0;
+        // First pass: collect amounts and count
+        do {
+            totalAmount += cur.amount;
+            groupSize++;
+            cur = cur.next;
+        } while (cur != this);
+        double newAmount = totalAmount / groupSize;
+        cur = this;
+        // Second pass: update amounts
+        do {
+            cur.amount = newAmount;
+            cur = cur.next;
+        } while (cur != this);
     }
 }
 

@@ -52,40 +52,40 @@ public class Container {
         if (parent.isRoot())
             return parent;
         parent = parent.findRootAndCompress();
-	return parent;
+        return parent;
     }
     
     public double getAmount() {
-	Container root = findRootAndCompress();
+        Container root = findRootAndCompress();
         SpecialContainer special = (SpecialContainer) root.parent;
-	return special.amount; 
+        return special.amount; 
     }
     public void addWater(double amount) {
-	Container root = findRootAndCompress();
+        Container root = findRootAndCompress();
         SpecialContainer special = (SpecialContainer) root.parent;
-	special.amount += amount / special.size;
+        special.amount += amount / special.size;
     }
 
     public void connectTo(Container other) {
-	Container root1 = findRootAndCompress(),
-	          root2 = other.findRootAndCompress();
-	if (root1==root2) return;
+        Container root1 = findRootAndCompress(),
+                  root2 = other.findRootAndCompress();
+        if (root1==root2) return;
         SpecialContainer special1 = (SpecialContainer) root1.parent,
                          special2 = (SpecialContainer) root2.parent;
 
-	int size1 = special1.size, size2 = special2.size;
-	double newAmount = ((special1.amount * size1) + 
+        int size1 = special1.size, size2 = special2.size;
+        double newAmount = ((special1.amount * size1) + 
                             (special2.amount * size2)) / (size1 + size2);
 
-	if (size1 <= size2) {
-	    root1.parent = root2;
-	    special2.amount = newAmount;
-	    special2.size  += size1;
-	} else {
-	    root2.parent = root1;
-	    special1.amount = newAmount;
-	    special1.size  += size2;
-	}
+        if (size1 <= size2) {
+            root1.parent = root2;
+            special2.amount = newAmount;
+            special2.size  += size1;
+        } else {
+            root2.parent = root1;
+            special1.amount = newAmount;
+            special1.size  += size2;
+        }
     }
 }
 
