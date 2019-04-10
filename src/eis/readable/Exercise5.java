@@ -1,8 +1,9 @@
+package eis.readable;
+
 import java.util.Arrays;
 import java.util.Stack;
 
 public class Exercise5 {
-
 
 /**
  * The BFS implemented in code to use.
@@ -34,22 +35,22 @@ public static void bfsImplement(byte [][] a,int vertices,int source){  //passing
          }}}
 }
 
+    // This belongs to breadthFirst. Enums cannot be local.
     private static enum Status { FRESH, ENQUEUED, PROCESSED };
 
-    /**
-     * The BFS.
+   /** Visits the node in a directed graph in breadth first order,
+     * printing the index of each visited node.
      *
-     * @param a The adjacency matrix
-     * @param vertices The number of vertices
-     * @param source The source vertex
+     * @param adjacent     the adjacency matrix
+     * @param vertexCount  the number of vertices
+     * @param sourceVertex the source vertex
      */
-    public static void breadthFirst(byte [][] a, int vertexCount, int source) {
-        
+    public static void breadthFirst(byte[][] adjacent, int vertexCount, int sourceVertex) {      
         Status[] status = new Status[vertexCount];
         Arrays.fill(status, Status.FRESH);
 
         Stack<Integer> stack = new Stack<>(); 
-        stack.push(source);
+        stack.push(sourceVertex);
 
         while (!stack.isEmpty()) {
             int currentVertex = stack.pop();
@@ -57,7 +58,7 @@ public static void bfsImplement(byte [][] a,int vertices,int source){  //passing
             status[currentVertex] = Status.PROCESSED; 
 
             for (int i=0; i<vertexCount; i++) {
-                if (a[currentVertex][i] != 0 && status[i] == Status.FRESH) {
+                if (adjacent[currentVertex][i] != 0 && status[i] == Status.FRESH) {
                     stack.push(i);
                     status[i] = Status.ENQUEUED;
                 }
@@ -65,4 +66,11 @@ public static void bfsImplement(byte [][] a,int vertices,int source){  //passing
         }
     }
 
+    public static void main(String ... args) {
+        byte[][] graph = {{1,0,1,0}, {0,0,1,1}, {1,0,0,1}, {0,1,1,0} };
+        System.out.println("Old version:");
+        bfsImplement(graph, graph.length, 0);
+        System.out.println("New version:");
+        breadthFirst(graph, graph.length, 0);
+    }
 }

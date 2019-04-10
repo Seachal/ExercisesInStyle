@@ -1,6 +1,5 @@
 package eis.memory2;
 
-import java.util.*;
 
 /** A water container, optimized for memory footprint (based on plain arrays).
  *
