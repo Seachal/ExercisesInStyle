@@ -13,8 +13,8 @@ import java.util.*;
  *  Water can be added or removed.
  *  Two containers can be connected with a permanent pipe.
  *  When two containers are connected, directly or indirectly,
- *  they become communicating vessels and water will distribute
- *  equally among all of them.
+ *  they become communicating vessels and water will <b>distribute
+ *  equally</b> among all of them.
  *  <p>
  *  The set of all containers connected to this one is called the
  *  <i>group</i> of this container.
