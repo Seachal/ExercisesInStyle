@@ -12,9 +12,9 @@ import java.util.*;
 public class Container {
 
     private Group group = new Group(this);
-    private static int nGroups;
 
     private static class Group {
+        static int nGroups;
         double amount;
         Set<Container> elems = new HashSet<>();
         // group ids ensure consistent ordering and avoid deadlocks

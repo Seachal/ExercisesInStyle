@@ -40,4 +40,8 @@ public class SocialUserNoDeadlock {
     public synchronized boolean isFriend(SocialUserNoDeadlock other) {
         return friends.contains(other);
     }
+
+    public String getName() {
+        return name;
+    }
 }

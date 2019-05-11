@@ -43,22 +43,21 @@ public class ContainerSystem {
     {
         int groupID1 = group[containerID1],
             groupID2 = group[containerID2];
-        if (groupID1 == groupID2) {
+        if (groupID1 == groupID2)
             return this;
-        } else {
-            ContainerSystem result = new ContainerSystem(this, group.length);
-            int size1 = groupSize(groupID1),
-                size2 = groupSize(groupID2);
-            double amount1 = amount[groupID1] * size1,
-                   amount2 = amount[groupID2] * size2;       
-            result.amount[groupID1] = (amount1 + amount2) / (size1 + size2);
 
-            for (int i=0; i<group.length; i++)
-                if (group[i] == groupID2)
-                    result.group[i] = groupID1;
+        ContainerSystem result = new ContainerSystem(this, group.length);
+        int size1 = groupSize(groupID1),
+            size2 = groupSize(groupID2);
+        double amount1 = amount[groupID1] * size1,
+               amount2 = amount[groupID2] * size2;       
+        result.amount[groupID1] = (amount1 + amount2) / (size1 + size2);
 
-            return result;
-        }
+        for (int i=0; i<group.length; i++)
+            if (group[i] == groupID2)
+                result.group[i] = groupID1;
+
+        return result;
     }
 
     private int groupSize(int groupID) {
@@ -75,15 +74,13 @@ public class ContainerSystem {
     }
 
     public ContainerSystem addWater(int containerID, double amount) {
-        if (amount == 0) {
+        if (amount == 0) 
             return this;
-        } else {
-            ContainerSystem result = new ContainerSystem(this, group.length);
-            int groupID = group[containerID],
-                groupSize = groupSize(groupID);
-            result.amount[groupID] += amount / groupSize;
-            return result;
-        }
+        ContainerSystem result = new ContainerSystem(this, group.length);
+        int groupID = group[containerID],
+            groupSize = groupSize(groupID);
+        result.amount[groupID] += amount / groupSize;
+        return result;
     }
 
     @Override

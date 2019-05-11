@@ -27,4 +27,8 @@ public class SocialUser {
     public synchronized boolean isFriend(SocialUser other) {
         return friends.contains(other);
     }
+
+    public String getName() {
+        return name;
+    }
 }
