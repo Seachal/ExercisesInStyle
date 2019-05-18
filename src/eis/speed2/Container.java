@@ -1,8 +1,6 @@
 package eis.speed2;
 
-import java.util.*;
-
-/** A water container, optimized for speed of addWater and connect.
+/** A water container, optimized for speed of addWater and connectTo.
  *
  *  @author Marco Faella
  *  @version 1.0
@@ -27,22 +25,22 @@ public class Container {
         return amount; 
     }
     private void updateGroup() {
-        Container cur = this;
+        Container current = this;
         double totalAmount = 0;
         int groupSize = 0;
         // First pass: collect amounts and count
         do {
-            totalAmount += cur.amount;
+            totalAmount += current.amount;
             groupSize++;
-            cur = cur.next;
-        } while (cur != this);
+            current = current.next;
+        } while (current != this);
         double newAmount = totalAmount / groupSize;
-        cur = this;
+        current = this;
         // Second pass: update amounts
         do {
-            cur.amount = newAmount;
-            cur = cur.next;
-        } while (cur != this);
+            current.amount = newAmount;
+            current = current.next;
+        } while (current != this);
     }
 }
 

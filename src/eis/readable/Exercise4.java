@@ -31,8 +31,9 @@ public class Exercise4 {
      */
     private static boolean isSquare(double[][] matrix) {
         for (double[] row: matrix) {
-            if (row.length != matrix.length)
+            if (row.length != matrix.length) {
                 return false;
+            }
         }
         return true;
     }
@@ -43,9 +44,10 @@ public class Exercise4 {
      * @throws IllegalArgumentException if the given matrix is not square
      */
     public static void transpose(double[][] matrix) {
-        if (!isSquare(matrix))
+        if (!isSquare(matrix)) {
             throw new IllegalArgumentException(
                       "Cannot transpose a non-square matrix.");
+        }
 
         for (int i=0; i<matrix.length; i++) {
             for (int j=0; j<i; j++) {

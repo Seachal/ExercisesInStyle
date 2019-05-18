@@ -1,7 +1,5 @@
 package eis.speed3compact;
 
-import java.util.*;
-
 /** A water container, with all methods in amortized almost-constant time.
  *
  *  Based on union-find trees with link-by-size and path compression.

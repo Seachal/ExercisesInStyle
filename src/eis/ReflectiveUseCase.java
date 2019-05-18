@@ -16,20 +16,23 @@ public class ReflectiveUseCase {
                                                      "eis.memory2.Container",
                                                      "eis.contracts.Container",
                                                      "eis.invariants.Container",
-                                                     "eis.readable.Container");
+                                                     "eis.readable.Container",
+                                                     "eis.threadsafe.Container");
     private final static List<Class<?>> versions = new ArrayList<>();
 
-    static {
+    private static void initVersions() {
         for (String className: classNames)
             try {
                 versions.add(Class.forName(className));
             } catch (ClassNotFoundException e) {
                 System.out.println("Cannot find class " + className + " (perhaps you did not compile it). Skipping it.");
-                continue;
             }
     }
 
     public static void main(String...args) throws ReflectiveOperationException {
+
+        initVersions();
+
         final int NUM_CONTAINERS = 4;
         Object[] container = new Object[NUM_CONTAINERS];
 
@@ -38,7 +41,13 @@ public class ReflectiveUseCase {
 
             Method addWater, connectTo, getAmount;
             try {
-                addWater  = c.getMethod("addWater", double.class);
+                // For addWater, let's accommodate memory2 and accept 
+                // both double and float parameters
+                try { 
+                    addWater  = c.getMethod("addWater", double.class);
+                } catch (ReflectiveOperationException e) {
+                    addWater  = c.getMethod("addWater", float.class);
+                }
                 connectTo = c.getMethod("connectTo", c);
                 getAmount = c.getMethod("getAmount");
 

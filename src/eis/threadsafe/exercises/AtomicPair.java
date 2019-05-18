@@ -1,9 +1,9 @@
-package eis.threadsafe;
+package eis.threadsafe.exercises;
 
-public class AtomicPair1<S,T> {
+public class AtomicPair<S,T> {
     private S first;
     private T second;
-    private Object lock = new Object();
+    private final Object lock = new Object();
 
     public void setBoth(S first, T second) {
         synchronized (lock) {

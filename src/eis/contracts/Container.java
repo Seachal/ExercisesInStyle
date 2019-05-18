@@ -40,7 +40,7 @@ public class Container {
         for (Container x: other.group) x.group = group;
         for (Container x: group) x.amount = newAmount;
 
-        assert postConnect(postData) : "connect failed its post-condition!";
+        assert postConnect(postData) : "connectTo failed its post-condition!";
     }
 
     private static class ConnectPostData {

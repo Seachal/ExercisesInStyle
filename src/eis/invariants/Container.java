@@ -43,7 +43,7 @@ public class Container {
         for (Container x: other.group) x.group = group;
         for (Container x: group) x.amount = newAmount;
 
-        assert invariantsArePreservedByConnectTo(other) : "connect broke an invariant!";
+        assert invariantsArePreservedByConnectTo(other) : "connectTo broke an invariant!";
     }
 
     private boolean invariantsArePreservedByConnectTo(Container other) {

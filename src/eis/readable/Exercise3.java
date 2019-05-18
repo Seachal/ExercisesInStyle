@@ -25,8 +25,9 @@ public class Exercise3 {
     public static int countOccurrences(String s, char c) {
         int count = 0;
         for (int i=0; i<s.length(); i++) {
-            if (s.charAt(i) == c)
+            if (s.charAt(i) == c) {
                 count++;
+            }
         }
         return count;
     }

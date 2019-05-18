@@ -6,7 +6,7 @@ import java.util.*;
  * Exercise 4: a thread-safe generic indexed container.
  */
 public class Repository<T> {
-    private final ArrayList<T> list;
+    private final List<T> list;
     private final Object[] monitor;
 
     public Repository(int size) {
