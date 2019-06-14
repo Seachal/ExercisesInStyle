@@ -1,4 +1,4 @@
-package eis.exercises;
+package eis.chapter4.exercises;
 
 import java.util.ArrayList;
 

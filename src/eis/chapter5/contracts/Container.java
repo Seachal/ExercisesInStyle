@@ -1,4 +1,4 @@
-package eis.contracts;
+package eis.chapter5.contracts;
 
 import java.util.*;
 

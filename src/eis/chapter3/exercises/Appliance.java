@@ -1,4 +1,4 @@
-package eis.exercises;
+package eis.chapter3.exercises;
 
 public class Appliance {
     private final int powerAbsorbed;

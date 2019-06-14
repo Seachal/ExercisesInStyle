@@ -1,4 +1,4 @@
-package eis.novice;
+package eis.chapter1.novice;
 
 public class Container {
 

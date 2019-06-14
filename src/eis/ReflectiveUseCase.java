@@ -5,19 +5,18 @@ import java.util.*;
 
 public class ReflectiveUseCase {
 
-    private static List<String> classNames = List.of(
-                                                     "eis.novice.Container",
-                                                     "eis.reference.Container",
-                                                     "eis.speed1.Container",
-                                                     "eis.speed2.Container",
-                                                     "eis.speed3.Container",
-                                                     "eis.speed3compact.Container",
-                                                     "eis.memory1.Container",
-                                                     "eis.memory2.Container",
-                                                     "eis.contracts.Container",
-                                                     "eis.invariants.Container",
-                                                     "eis.readable.Container",
-                                                     "eis.threadsafe.Container");
+    private static List<String> classNames = List.of("eis.chapter1.novice.Container",
+                                                     "eis.chapter2.reference.Container",
+                                                     "eis.chapter3.speed1.Container",
+                                                     "eis.chapter3.speed2.Container",
+                                                     "eis.chapter3.speed3.Container",
+                                                     "eis.chapter4.exercises.Container",
+                                                     "eis.chapter4.memory1.Container",
+                                                     "eis.chapter4.memory2.Container",
+                                                     "eis.chapter5.contracts.Container",
+                                                     "eis.chapter5.invariants.Container",
+                                                     "eis.chapter7.readable.Container",
+                                                     "eis.chapter8.threads.Container");
     private final static List<Class<?>> versions = new ArrayList<>();
 
     private static void initVersions() {

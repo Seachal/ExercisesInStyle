@@ -1,8 +1,9 @@
 package eis.tests;
 
-import eis.reference.Container;
-
 import org.junit.Test;
+
+import eis.chapter2.reference.Container;
+
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 

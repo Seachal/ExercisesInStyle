@@ -1,6 +1,6 @@
-package eis;
+package eis.chapter1;
 
-import eis.reference.Container;
+import eis.chapter2.reference.Container;
 
 /** A simple use case for water containers.
 

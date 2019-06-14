@@ -1,4 +1,4 @@
-package eis.reference;
+package eis.chapter2.reference;
 
 import java.util.*;
 

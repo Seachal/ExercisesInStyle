@@ -1,4 +1,4 @@
-package eis.invariants;
+package eis.chapter5.invariants;
 
 import java.util.*;
 

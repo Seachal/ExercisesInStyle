@@ -1,4 +1,4 @@
-package eis.speed3compact;
+package eis.chapter4.exercises;
 
 /** A water container, with all methods in amortized almost-constant time.
  *
