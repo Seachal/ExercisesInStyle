@@ -1,4 +1,4 @@
-package eis.memory2;
+package eis.chapter4.memory2;
 
 
 /** A water container, optimized for memory footprint (based on plain arrays).

@@ -1,4 +1,4 @@
-package eis.memory4;
+package eis.chapter4.memory4;
 
 import java.util.Arrays;
 

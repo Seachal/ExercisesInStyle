@@ -1,4 +1,4 @@
-package eis.speed3;
+package eis.chapter3.speed3;
 
 /** A water container, with all methods in amortized almost-constant time.
  *

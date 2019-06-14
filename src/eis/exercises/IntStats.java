@@ -1,6 +1,6 @@
 package eis.exercises;
 
-/* Chapter 3, exercise 3.
+/* Chapter 3.
  *
  * Version where insert and getAverage work in constant time.
  * getMedian takes quasilinear time.
@@ -12,7 +12,7 @@ package eis.exercises;
 import java.util.*;
 
 public class IntStats {
-    private int sum;
+    private long sum;
     private List<Integer> numbers = new ArrayList<>();
 
     public void insert(int n) { 

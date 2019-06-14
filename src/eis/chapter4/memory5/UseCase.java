@@ -1,4 +1,4 @@
-package eis.memory3;
+package eis.chapter4.memory5;
 
 /** A use case for the object-less water container API (memory3 and memory4).
  *

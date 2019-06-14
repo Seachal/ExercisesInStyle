@@ -1,9 +1,13 @@
-package eis.memory5;
+package eis.chapter4.memory5;
 
 import java.util.Arrays;
 
 /** A system of water containers, identified by integer IDs (object-less API).
  *
+ *  Compared to memory4, it uses a more accurate encoding/decoding procedure
+ *  between integral indices and floats, based on Float.intBitsToFloat and
+ *  Float.floatToRawIntBits.
+ *  
  *  @author Marco Faella
  *  @version 1.0
  */

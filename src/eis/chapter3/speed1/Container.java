@@ -1,4 +1,4 @@
-package eis.speed1;
+package eis.chapter3.speed1;
 
 import java.util.*;
 

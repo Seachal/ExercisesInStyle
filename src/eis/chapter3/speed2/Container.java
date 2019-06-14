@@ -1,4 +1,4 @@
-package eis.speed2;
+package eis.chapter3.speed2;
 
 /** A water container, optimized for speed of addWater and connectTo.
  *

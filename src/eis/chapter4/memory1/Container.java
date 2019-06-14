@@ -1,4 +1,4 @@
-package eis.memory1;
+package eis.chapter4.memory1;
 
 import java.util.*;
 
