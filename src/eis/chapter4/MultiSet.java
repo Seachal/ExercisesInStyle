@@ -10,23 +10,23 @@ import java.util.List;
  *  @version 1.0
  */
 public class MultiSet<T> {
-	private List<T> data = new ArrayList<>(); 
+    private List<T> data = new ArrayList<>(); 
 
-	public void add(T elem) {
-		data.add(elem);
-	}
-		
-	public long count(T elem) {
-		return data.stream().filter(x -> x.equals(elem)).count();
-	}
-	
-	public long oldFashionedCount(T elem) {
-		long count = 0;
-		for (T other: data) {
-			if (other.equals(elem)) {
-				count++;
-			}
-		}
-		return count;
-	}
+    public void add(T elem) {
+        data.add(elem);
+    }
+
+    public long count(T elem) {
+        return data.stream().filter(x -> x.equals(elem)).count();
+    }
+
+    public long oldFashionedCount(T elem) {
+        long count = 0;
+        for (T other: data) {
+            if (other.equals(elem)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
