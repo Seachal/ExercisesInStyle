@@ -1,12 +1,12 @@
-# Java: Exercises in Style
+# Seriously Good Software
 ## Source files
 
-These are the source files for the book project "Java: Exercises in Style",
-currently under development for Manning.
+These are the source files for the book "Seriously Good Software",
+published by Manning.
 
 Most source files are different versions of the same `Container` class.
 So, they are all called `Container` but sit in different packages.
-For example, `eis.reference.Container` is the reference version.
+For example, `eis.chapter2.reference.Container` is the reference (baseline) version.
 
 Classes with a "main" method:
 
