@@ -12,12 +12,12 @@ public class SocialUserNoDeadlock {
     private final String name;
     private final Set<SocialUserNoDeadlock> friends = new HashSet<>();
     private final int id;
-    private static int counter;
+    private static int instanceCounter;
 
     public SocialUserNoDeadlock(String name) {
         this.name = name;
-        this.id = counter;
-        counter++;
+        this.id = instanceCounter;
+        instanceCounter++;
     }
 
     public void befriend(SocialUserNoDeadlock other) {

@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Before;
@@ -31,15 +30,17 @@ public class BoundedSetTests {
 
     @Test
     public void testAddOnEmpty() {
-        set.add(1);
-        assertEquals(set.content(), List.of(1));
+        Integer result = set.add(1);
+        assertEquals("Wrong return value", null, result);
+        assertEquals("Wrong set content", List.of(1), set.content());
     }
     
     @Test
     public void testAddAbsentOnNonFull() {
         set.add(1);
-        set.add(2);  // line under test
-        assertEquals(set.content(), List.of(1,2));
+        Integer result = set.add(2);  // line under test
+        assertEquals("Wrong return value", null, result);
+        assertEquals("Wrong set content", List.of(1,2), set.content());
     }
 
     @Test
@@ -47,16 +48,18 @@ public class BoundedSetTests {
         set.add(1);
         set.add(2);
         set.add(3);
-        set.add(4); // line under test
-        assertEquals(set.content(), List.of(2,3,4));
+        Integer result = set.add(4); // line under test
+        assertEquals("Wrong return value", Integer.valueOf(1), result);
+        assertEquals("Wrong set content", List.of(2,3,4), set.content());
     }
     
     @Test
     public void testAddPresentOnNonFull() {
         set.add(2);
         set.add(1);
-        set.add(2); // line under test
-        assertEquals(set.content(), List.of(1,2));
+        Integer result = set.add(2); // line under test
+        assertEquals("Wrong return value", null, result);
+        assertEquals("Wrong set content", List.of(1,2), set.content());
     }
 
     @Test
@@ -64,7 +67,8 @@ public class BoundedSetTests {
         set.add(1);
         set.add(2);
         set.add(3);
-        set.add(2); // line under test
-        assertEquals(set.content(), List.of(1,3,2));
+        Integer result = set.add(2); // line under test
+        assertEquals("Wrong return value", null, result);
+        assertEquals("Wrong set content", List.of(1,3,2), set.content());
     }
 }
