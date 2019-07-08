@@ -1,11 +1,8 @@
 package eis.chapter6;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
-
-import java.util.List;
-
+import static org.hamcrest.MatcherAssert.assertThat; 
+import static org.hamcrest.Matchers.*;
 import org.junit.Before;
 
 /** Unit tests for bounded sets.
@@ -31,16 +28,16 @@ public class BoundedSetTests {
     @Test
     public void testAddOnEmpty() {
         Integer result = set.add(1);
-        assertEquals("Wrong return value", null, result);
-        assertEquals("Wrong set content", List.of(1), set.content());
+        assertThat("Wrong return value", result, is(nullValue()));
+        assertThat("Wrong set content", set.content(), contains(1));
     }
     
     @Test
     public void testAddAbsentOnNonFull() {
         set.add(1);
         Integer result = set.add(2);  // line under test
-        assertEquals("Wrong return value", null, result);
-        assertEquals("Wrong set content", List.of(1,2), set.content());
+        assertThat("Wrong return value", result, is(nullValue()));
+        assertThat("Wrong set content", set.content(), contains(1, 2));        
     }
 
     @Test
@@ -49,8 +46,8 @@ public class BoundedSetTests {
         set.add(2);
         set.add(3);
         Integer result = set.add(4); // line under test
-        assertEquals("Wrong return value", Integer.valueOf(1), result);
-        assertEquals("Wrong set content", List.of(2,3,4), set.content());
+        assertThat("Wrong return value", result, is(1));
+        assertThat("Wrong set content", set.content(), contains(2, 3, 4));        
     }
     
     @Test
@@ -58,8 +55,8 @@ public class BoundedSetTests {
         set.add(2);
         set.add(1);
         Integer result = set.add(2); // line under test
-        assertEquals("Wrong return value", null, result);
-        assertEquals("Wrong set content", List.of(1,2), set.content());
+        assertThat("Wrong return value", result, is(nullValue()));
+        assertThat("Wrong set content", set.content(), contains(1, 2));        
     }
 
     @Test
@@ -68,7 +65,7 @@ public class BoundedSetTests {
         set.add(2);
         set.add(3);
         Integer result = set.add(2); // line under test
-        assertEquals("Wrong return value", null, result);
-        assertEquals("Wrong set content", List.of(1,3,2), set.content());
+        assertThat("Wrong return value", result, is(nullValue()));       
+        assertThat("Wrong set content", set.content(), contains(1, 3, 2));        
     }
 }

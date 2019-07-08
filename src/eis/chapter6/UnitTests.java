@@ -1,11 +1,15 @@
 package eis.chapter6;
 
-import org.junit.Test;
 
 import eis.chapter2.reference.Container;
 
+import org.junit.Test;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
+import static org.hamcrest.MatcherAssert.assertThat; 
+import static org.hamcrest.Matchers.*;
+
 
 /* To run these tests from the command line, from folder /src:
  *
@@ -46,12 +50,25 @@ public class UnitTests {
     }
 
     // Constructor
-    
+        
     @Test
     public void testNewContainerIsEmpty() {
         assertTrue("new container is not empty", a.getAmount() == 0);
     }
 
+    private static final double DELTA = 0;
+
+    @Test
+    public void testNewContainerIsEmptyWithEquals() {
+        assertEquals("new container is not empty", 0, a.getAmount(), DELTA);
+    }
+    
+    @Test
+    public void testNewContainerIsEmptyWithHamcrest() {
+        assertThat("new container is not empty", a.getAmount(), closeTo(0, DELTA));
+    }
+
+    
     // AddWater
     
     @Test
