@@ -1,7 +1,6 @@
-package eis.chapter9.generic.plot;
+package eis.chapter9.plot;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
@@ -16,13 +15,14 @@ import javax.swing.event.*;
 @SuppressWarnings("serial")
 public class ParamPanel extends JPanel {
 
-    private final PFunction f_scaled;
-    private final ObservablePFunction f_obs;
+    private double[] params;
+    private final JPanel[] views;
     private static final int minParam = -10, maxParam = 10;
+    private boolean active;
     
-    public ParamPanel(ObservablePFunction f) {
-        f_obs = f;
-        f_scaled = PFunctionDecorators.scaleParams(f, minParam, maxParam);
+    public ParamPanel(double[] params, JPanel ... views) {
+        this.params = params;
+        this.views = views;
 
         Border b = BorderFactory.createBevelBorder(BevelBorder.RAISED);
         TitledBorder tb = 
@@ -34,10 +34,10 @@ public class ParamPanel extends JPanel {
         setBorder(tb);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        int n = f_scaled.getNParams();
-        for (int i=0; i<n ;i++) {
+        for (int i=0; i<3 ;i++) {
             add(mkSliderBox(i));
         }
+        active = true;
     }
 
     /*
@@ -52,11 +52,14 @@ public class ParamPanel extends JPanel {
          * in the MVC pattern. 
          */
         slider.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
+            public void stateChanged(ChangeEvent _e) {
                 if (sliderMax == sliderMin) return;
-
-                f_scaled.setParam(i, (slider.getValue() - sliderMin)
-                        / (double) (sliderMax - sliderMin));
+                double relativeValue = (slider.getValue() - sliderMin) / (double) (sliderMax - sliderMin);
+                double absoluteValue = minParam + relativeValue * (maxParam - minParam);
+                params[i] = absoluteValue;
+                ParamPanel.this.repaint();
+                for (JPanel view: views)
+                    view.repaint();
             }
         });
         slider.setValue((sliderMax + sliderMin) / 2);
@@ -64,6 +67,9 @@ public class ParamPanel extends JPanel {
         return slider;
     }
 
+    private static final String[] paramName = { "a", "b", "c" };
+    private final JLabel[] valueLabels = new JLabel[3];
+    
     /*
      * The box that holds the slider plus a textual label and a changing label
      * that shows the value of the slider.
@@ -71,17 +77,17 @@ public class ParamPanel extends JPanel {
     private Box mkSliderBox(int i) {
 
         Box b = Box.createHorizontalBox();
-        JLabel nameLabel = new JLabel(f_scaled.getParamName(i));
+        JLabel nameLabel = new JLabel(paramName[i]);
         nameLabel.setFont(Main.standardFont);
         nameLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
         nameLabel.setForeground(java.awt.Color.black);
         b.add(nameLabel);
 
-        JLabel valueLabel = new ParamLabel(i);
-        valueLabel.setFont(Main.standardFont);
-        valueLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-        valueLabel.setForeground(java.awt.Color.black);
-        b.add(valueLabel);
+        valueLabels[i] = new JLabel("");
+        valueLabels[i].setFont(Main.standardFont);
+        valueLabels[i].setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+        valueLabels[i].setForeground(java.awt.Color.black);
+        b.add(valueLabels[i]);
 
         JSlider slider = mkSlider(i);
         b.add(slider);
@@ -89,30 +95,17 @@ public class ParamPanel extends JPanel {
         return b;
     }
 
-    class ParamLabel extends JLabel implements ActionListener {
-        /**
-         * Construct a label that will show the value of a parameter.
-         * 
-         * @param i
-         *            the index of the parameter to observe
-         */
-        public ParamLabel(int i) {
-            this.i = i;
-            f_obs.addActionListener(this);
-        }
+    @Override
+    public void repaint() {
+        if (active)
+            updateLabels();
+        super.repaint();
+    }
 
-        /**
-         * Respond to a change in the observed parameter model
-         * 
-         * @param Observable
-         *            the model we are observing
-         * @param arg
-         *            ignored
-         */
-        public void actionPerformed(ActionEvent _event) {
-            setText(String.format("%5.2f", f_scaled.getParam(i)));
-            repaint();
+    private void updateLabels() {
+        for (int i=0; i<3; i++) {
+            if (valueLabels != null && valueLabels[i] != null)
+                valueLabels[i].setText(String.format("%5.2f", params[i]));
         }
-        private int i;
     }
 }

@@ -1,7 +1,6 @@
-package eis.chapter9.generic.plot;
+package eis.chapter9.plot;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.Dimension;
@@ -13,7 +12,7 @@ import java.awt.Dimension;
  * @version 1.0
  */
 @SuppressWarnings("serial")
-public class PlotPanel extends JPanel implements ActionListener {
+public class PlotPanel extends JPanel {
 
     /**
      * Create a panel that can display the provided function.
@@ -21,10 +20,9 @@ public class PlotPanel extends JPanel implements ActionListener {
      * @param f
      *            the function to plot
      */
-    public PlotPanel(ObservablePFunction f) {
-        f.addActionListener(this);
-        this.f = PFunctionDecorators.scaleRange(f, xMin, xMax);
-
+    public PlotPanel(double[] params) {
+        this.params = params;
+        
         Border b = BorderFactory.createBevelBorder(BevelBorder.RAISED);
         TitledBorder tb = 
                 BorderFactory.createTitledBorder(b, 
@@ -37,7 +35,7 @@ public class PlotPanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    private PFunction f;
+    private double[] params;
     private final static int nPoint = 101;
     /* the range that will be plotted */
     private final static double xMin = -5, xMax = 5, yMin = -5, yMax = 5;
@@ -46,14 +44,6 @@ public class PlotPanel extends JPanel implements ActionListener {
      */
     private int[] x = new int[nPoint];
     private int[] y = new int[nPoint];
-
-    /**
-     * Respond to a change in the observed function model
-     */
-    @Override
-    public void actionPerformed(ActionEvent _event) {
-        repaint();
-    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -73,7 +63,8 @@ public class PlotPanel extends JPanel implements ActionListener {
         // compute screen coordinates
         for (int i=0; i < nPoint; i++) {
             double t = ((double) i) / (nPoint - 1);
-            double val = f.eval(t);
+            double scaledX = xMin + t*(xMax - xMin);
+            double val = params[0] + params[1] * scaledX + params[2] * scaledX * scaledX;
             x[i] = xpadding + (int) ((i / (double)(nPoint-1)) * width);
             y[i] = ypadding + (int) (height * (1- (val-yMin) / (double) (yMax - yMin)) );
         }
