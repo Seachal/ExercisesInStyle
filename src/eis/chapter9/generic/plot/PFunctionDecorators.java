@@ -11,9 +11,9 @@ public abstract class PFunctionDecorators {
                   in the range [xMin,xMax], i.e., it returns
 		  f.eval(xMin + x*(xMax - xMin)).
     */
-    public static PFunction scaleRange(final PFunction f,
+    public static ParametricFunction scaleRange(final ParametricFunction f,
 				       final double xMin, final double xMax) {
-	return new PFunction() {
+	return new ParametricFunction() {
 
 		public int getNParams()           { return f.getNParams();    }
 		public double getParam(int i)     { return f.getParam(i);     }
@@ -32,9 +32,9 @@ public abstract class PFunctionDecorators {
                   in the range [pMin,pMax], i.e., it sets
 		          param[i] to pMin + p*(pMax - pMin).
     */
-    public static PFunction scaleParams(final PFunction f,
+    public static ParametricFunction scaleParams(final ParametricFunction f,
 					final double pMin, final double pMax) {
-	return new PFunction() {
+	return new ParametricFunction() {
 
 		public int getNParams()           { return f.getNParams();    }
 		public double getParam(int i)     { return f.getParam(i);     }

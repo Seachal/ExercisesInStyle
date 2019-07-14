@@ -64,7 +64,7 @@ public class PlotPanel extends JPanel {
         for (int i=0; i < nPoint; i++) {
             double t = ((double) i) / (nPoint - 1);
             double scaledX = xMin + t*(xMax - xMin);
-            double val = params[0] + params[1] * scaledX + params[2] * scaledX * scaledX;
+            double val = params[0] * scaledX * scaledX + params[1] * scaledX + params[2];
             x[i] = xpadding + (int) ((i / (double)(nPoint-1)) * width);
             y[i] = ypadding + (int) (height * (1- (val-yMin) / (double) (yMax - yMin)) );
         }

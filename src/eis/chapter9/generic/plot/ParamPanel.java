@@ -16,11 +16,11 @@ import javax.swing.event.*;
 @SuppressWarnings("serial")
 public class ParamPanel extends JPanel {
 
-    private final PFunction f_scaled;
-    private final ObservablePFunction f_obs;
+    private final ParametricFunction f_scaled;
+    private final ObservableFunction f_obs;
     private static final int minParam = -10, maxParam = 10;
     
-    public ParamPanel(ObservablePFunction f) {
+    public ParamPanel(ObservableFunction f) {
         f_obs = f;
         f_scaled = PFunctionDecorators.scaleParams(f, minParam, maxParam);
 

@@ -20,7 +20,7 @@ public class TablePanel extends JPanel {
      * @param f
      *            the function to plot
      */
-    public TablePanel(ObservablePFunction f) {
+    public TablePanel(ObservableFunction f) {
         f_obs  = f;
         f_eval = PFunctionDecorators.scaleRange(f, xMin, xMax);
 
@@ -57,8 +57,8 @@ public class TablePanel extends JPanel {
         setMaximumSize(getPreferredSize());
     }
 
-    private ObservablePFunction f_obs;
-    private PFunction f_eval;
+    private ObservableFunction f_obs;
+    private ParametricFunction f_eval;
     private int nPoint = 5;
     private final static double xMin = -5, xMax = 5;
 

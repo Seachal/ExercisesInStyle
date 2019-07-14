@@ -4,19 +4,19 @@ import java.awt.event.*;
 import java.util.*;
 
 /**
-   A parametric function that can be observed
+   A parametric function that can be observed.
 
    @author Marco Faella
    @version 1.0
  */
-public class ObservablePFunction implements PFunction {
+public class ObservableFunction implements ParametricFunction {
 	
-    private PFunction f;
+    private ParametricFunction f;
     private List<ActionListener> listeners = new ArrayList<>();
 
-    public ObservablePFunction(PFunction f) { this.f = f; }
+    public ObservableFunction(ParametricFunction f) { this.f = f; }
 
-    // The following methods are simply "passed" to the function
+    // The following methods passed through to the function
     public int getNParams()           { return f.getNParams();    }
     public double getParam(int i)     { return f.getParam(i);     }
     public String getParamName(int i) { return f.getParamName(i); }
@@ -28,9 +28,9 @@ public class ObservablePFunction implements PFunction {
 
     /** Calls the corresponding method of the function
         and then notifies the observers
-    */
+     */
     public void setParam(int i, double val) {
-	f.setParam(i, val);
+        f.setParam(i, val);
         for (ActionListener listener: listeners)
             listener.actionPerformed(null);
     }

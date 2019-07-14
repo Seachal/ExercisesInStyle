@@ -17,7 +17,7 @@ public class Main {
         JFrame frame = new JFrame("Parametric Function Display");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 
-        ObservablePFunction f = new ObservablePFunction(new Parabola());
+        ObservableFunction f = new ObservableFunction(new Hyperbola());
 
         Container inner = new Container();
         inner.setLayout(new BoxLayout(inner, BoxLayout.Y_AXIS));

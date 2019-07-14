@@ -21,7 +21,7 @@ public class PlotPanel extends JPanel implements ActionListener {
      * @param f
      *            the function to plot
      */
-    public PlotPanel(ObservablePFunction f) {
+    public PlotPanel(ObservableFunction f) {
         f.addActionListener(this);
         this.f = PFunctionDecorators.scaleRange(f, xMin, xMax);
 
@@ -37,7 +37,7 @@ public class PlotPanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    private PFunction f;
+    private ParametricFunction f;
     private final static int nPoint = 101;
     /* the range that will be plotted */
     private final static double xMin = -5, xMax = 5, yMin = -5, yMax = 5;

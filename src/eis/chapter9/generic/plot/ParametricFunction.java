@@ -5,7 +5,7 @@ package eis.chapter9.generic.plot;
    @author Marco Faella
    @version 1.0
  */
-public interface PFunction {
+public interface ParametricFunction {
 
     // Returns the number of parameters
     int getNParams();

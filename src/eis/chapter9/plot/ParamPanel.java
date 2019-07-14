@@ -37,6 +37,7 @@ public class ParamPanel extends JPanel {
         for (int i=0; i<3 ;i++) {
             add(mkSliderBox(i));
         }
+        updateLabels();
         active = true;
     }
 

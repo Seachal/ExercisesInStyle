@@ -76,8 +76,7 @@ public class TablePanel extends JPanel {
         for (int i=0; i<nPoint ; i++) {
             double x = ((double) i) / (nPoint - 1);
             double scaledX = xMin + x*(xMax - xMin);
-            if (valueLabels != null)
-                valueLabels[i].setText(String.format("%6.2f", params[0] + params[1] * scaledX + params[2] * scaledX * scaledX));
+            valueLabels[i].setText(String.format("%6.2f", params[0] * scaledX * scaledX + params[1] * scaledX + params[2]));
         }
     }
  }
