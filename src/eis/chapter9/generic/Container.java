@@ -23,8 +23,8 @@ class ContainerSummary {
         this.groupSize = groupSize;
     }
     public ContainerSummary() { this(0, 1); }
-    public void update(double amount) {
-        this.amount += amount;
+    public void update(double increment) {
+        this.amount += increment;
     }
     public ContainerSummary merge(ContainerSummary other) {
         return new ContainerSummary(amount + other.amount,

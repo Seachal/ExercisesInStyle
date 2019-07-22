@@ -11,9 +11,10 @@ import java.util.*;
  */
 public class ObservableFunction implements ParametricFunction {
 	
-    private ParametricFunction f;
-    private List<ActionListener> listeners = new ArrayList<>();
-
+    private final ParametricFunction f;
+    private final List<ActionListener> listeners = new ArrayList<>();
+    private final ActionEvent dummyEvent = new ActionEvent(this, ActionEvent.ACTION_FIRST, "update");
+    
     public ObservableFunction(ParametricFunction f) { this.f = f; }
 
     // The following methods passed through to the function
@@ -32,7 +33,7 @@ public class ObservableFunction implements ParametricFunction {
     public void setParam(int i, double val) {
         f.setParam(i, val);
         for (ActionListener listener: listeners)
-            listener.actionPerformed(null);
+            listener.actionPerformed(dummyEvent);
     }
 }
 

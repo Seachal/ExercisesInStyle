@@ -6,49 +6,58 @@ import eis.chapter9.generic.*;
 
 import java.util.*;
 
+/**
+ *  Exercise 4 from chapter 9.
+ *   
+ *  @version 1.0
+ *  @author Marco Faella
+ */
 public class Exercise4 {
-    public static <T> Set<Set<T>> partition(Collection<? extends T> c,
+   
+    /** 
+     * Partitions a collection according to an equivalence predicate.
+     * Given a collection and an equivalence, it collects the elements
+     * of the collection into disjoint sets of mutually equivalent elements.
+     * It doesn't modify the original collection.
+     * 
+     * @param collection The collection to be partitioned
+     * @param equivalent The predicate establishing equivalence
+     * @return The set of equivalence classes of the given collection with respect to the given equivalence
+     */
+    public static <T> Set<Set<T>> partition(Collection<? extends T> collection,
                                             BiPredicate<? super T, ? super T> equivalent) {
-        class Group implements Attribute<Set<T>,Set<T>> {
-            @Override
-            public Set<T> seed() {
-                return new HashSet<>();
-            }
-            @Override
-            public void update(Set<T> summary, Set<T> value) {
-                summary.addAll(value);
-            }           
-            @Override
-            public Set<T> merge(Set<T> s1, Set<T> s2) {
-                Set<T> result = new HashSet<>(s1);
-                result.addAll(s2);
-                return result;
-            }
-            @Override
-            public Set<T> report(Set<T> s) { return s; }
-        }
-        Attribute<Set<T>,Set<T>> groupProperty = new Group();
+        
+        Attribute<Set<T>,Set<T>> groupProperty = Attribute.of(
+                HashSet::new,
+                Set::addAll,
+                (set1, set2) -> {
+                    Set<T> union = new HashSet<>(set1);
+                    union.addAll(set2);
+                    return union;
+                },
+                set -> set);
        
+        // Assign a new node to each element
         Map<T,UnionFindNode<Set<T>,Set<T>>> nodeMap = new HashMap<>();
-        for (T item: c) {
-            UnionFindNode<Set<T>,Set<T>> node = 
-                new UnionFindNode<Set<T>,Set<T>>(groupProperty);
+        for (T item: collection) {
+            UnionFindNode<Set<T>,Set<T>> node = new UnionFindNode<>(groupProperty);
             node.update(Set.of(item));
             nodeMap.put(item, node);
         }
-        // Merge groups
-        for (T item1: c)
-            for (T item2: c)
+        // Turn equivalence into connections
+        for (T item1: collection)
+            for (T item2: collection)
                 if (equivalent.test(item1, item2))
                     nodeMap.get(item1).connectTo(nodeMap.get(item2));
-        // Collect results
+        // Collect groups of connected nodes
         Set<Set<T>> result = new HashSet<>();
-        for (T item: c)
+        for (T item: collection) {
             result.add(nodeMap.get(item).get());
+        }
         return result;
     }
     
-    public static void main(String...args) {
+    public static void main(String ... args) {
         Set<String> names = Set.of("Walter", "Skyler", "Hank", "Mike", "Saul");
         BiPredicate<String,String> sameLength = (a, b) -> a.length() == b.length();
         Set<Set<String>> groups = partition(names, sameLength);
