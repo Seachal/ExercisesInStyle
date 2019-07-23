@@ -1,6 +1,4 @@
-package eis.appendix;
-
-import eis.appendix.nowhitespace.Container;
+package eis.appendix.golfing;
 
 /** A simple use case for water containers.
 
