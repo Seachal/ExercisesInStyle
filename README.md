@@ -6,6 +6,8 @@ These are the source files for the book ["Seriously Good Software"](https://www.
 This repository is self-contained (dependencies included).
 You can compile it from the command line or import it in your IDE (Eclipse project file is included).
 
+You need at least **Java 9** to compile this project.
+
 Most source files are different versions of the same `Container` class.
 So, they are all called `Container` but sit in different packages.
 For example, `eis.chapter2.reference.Container` is the reference (baseline) version.
