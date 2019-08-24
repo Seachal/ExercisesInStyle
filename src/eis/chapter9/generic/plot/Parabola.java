@@ -5,26 +5,28 @@ package eis.chapter9.generic.plot;
    @version 1.0
  */
 public class Parabola implements ParametricFunction {
-    private final static int n = 3;
+    private final static int N = 3;
     private final static String[] name = {"a", "b", "c"};
-    private double[] a = new double[n];
+    private double[] a = new double[N];
 
-    public int getNParams() { return n; }
+    public int getNParams() { return N; }
+
+    public String getParamName(int i) {
+        if (i >= N || i<0)
+            throw new RuntimeException("Invalid parameter index.");
+        return name[i];
+    }
 
     public double getParam(int i) {
-        if (i >= n || i<0)
+        if (i >= N || i<0)
             throw new RuntimeException("Invalid parameter index.");
         return a[i];
     }
 
     public void setParam(int i, double val) {
-        if (i >= n || i<0)
+        if (i >= N || i<0)
             throw new RuntimeException("Invalid parameter index.");
         a[i] = val;
-    }
-
-    public String getParamName(int i) {
-        return name[i];
     }
 
     public double eval(double x) {

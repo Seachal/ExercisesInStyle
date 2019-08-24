@@ -23,7 +23,7 @@ public class Container {
     }
 
     public void connectTo(Container other) {
-        // Pre-condition
+        // Pre-condition check
         Objects.requireNonNull(other, "Cannot connect to a null container.");
         if (group==other.group) return;
 
@@ -82,6 +82,7 @@ public class Container {
 
     public void addWater(double amount) {
         double amountPerContainer = amount / group.size();
+        // Pre-condition check
         if (this.amount + amountPerContainer < 0)
             throw new IllegalArgumentException(
                       "Not enough water to match the addWater request.");

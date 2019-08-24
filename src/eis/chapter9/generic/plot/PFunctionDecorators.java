@@ -9,7 +9,7 @@ public abstract class PFunctionDecorators {
     /** Returns a decorated PFunction, whose eval method is modified as follows:
           eval(x) expects x to be a real number in [0,1] and scales it
                   in the range [xMin,xMax], i.e., it returns
-		  f.eval(xMin + x*(xMax - xMin)).
+		          f.eval(xMin + x*(xMax - xMin)).
     */
     public static ParametricFunction scaleRange(final ParametricFunction f,
 				       final double xMin, final double xMax) {

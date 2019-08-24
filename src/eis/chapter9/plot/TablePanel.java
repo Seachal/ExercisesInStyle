@@ -14,10 +14,10 @@ import javax.swing.border.*;
 public class TablePanel extends JPanel {
 
     /**
-     * Create a panel that can display the provided function.
+     * Create a panel that can display a table of values of a parabola
+     * with the given array of parameters.
      * 
-     * @param f
-     *            the function to plot
+     * @param params the parameters of the parabola
      */
     public TablePanel(double[] params) {
 

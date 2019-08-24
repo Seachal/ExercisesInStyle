@@ -1,4 +1,4 @@
-package eis.appendix.golfing;
+package eis.appendixa.golfing;
 
 public class Container {
     float a,s,t;

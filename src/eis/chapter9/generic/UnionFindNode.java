@@ -21,9 +21,9 @@ public class UnionFindNode<V,S>
     }
 
     @Override
-    public void update(V val) {
+    public void update(V value) {
         UnionFindNode<V,S> root = findRootAndCompress();
-        attribute.update(root.summary, val);
+        attribute.update(root.summary, value);
     }
 
     private UnionFindNode<V,S> findRootAndCompress() {

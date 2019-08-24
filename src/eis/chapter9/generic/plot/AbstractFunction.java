@@ -15,6 +15,13 @@ public abstract class AbstractFunction implements ParametricFunction {
     
     public int getNParams() { return n; }
 
+    public String getParamName(int i) {
+        final int firstLetter = 97; // a
+        if (i >= n || i<0)
+            throw new RuntimeException("Invalid parameter index.");
+        return Character.toString(firstLetter + i);
+    }
+
     public double getParam(int i) {
         if (i >= n || i<0)
             throw new RuntimeException("Invalid parameter index.");
@@ -25,12 +32,5 @@ public abstract class AbstractFunction implements ParametricFunction {
         if (i >= n || i<0)
             throw new RuntimeException("Invalid parameter index.");
         a[i] = val;
-    }
-
-    public String getParamName(int i) {
-        final int firstLetter = 97; // a
-        if (i >= n || i<0)
-            throw new RuntimeException("Invalid parameter index.");
-        return Character.toString(firstLetter + i);
     }
 }

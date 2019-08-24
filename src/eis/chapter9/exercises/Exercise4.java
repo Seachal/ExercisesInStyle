@@ -20,7 +20,8 @@ public class Exercise4 {
      * of the collection into disjoint sets of mutually equivalent elements.
      * It doesn't modify the original collection.
      * 
-     * @param collection The collection to be partitioned
+     * @param <T> The type of the collection being partitioned
+     * @param collection The collection being partitioned
      * @param equivalent The predicate establishing equivalence
      * @return The set of equivalence classes of the given collection with respect to the given equivalence
      */

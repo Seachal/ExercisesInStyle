@@ -67,7 +67,7 @@ public class Container {
         }
     }
 
-    /** Checks whether this container is connected to anoher one.
+    /** Checks whether this container is connected to another one.
      *
      *  @param other the container whose connection with this will be checked
      *  @return <code>true</code> if this container is connected 

@@ -1,4 +1,4 @@
-package eis.appendix.golfing;
+package eis.appendixa.golfing;
 
 /** A simple use case for water containers.
 

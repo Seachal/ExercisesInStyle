@@ -1,7 +1,4 @@
-package eis.chapter6;
-
-
-import eis.chapter2.reference.Container;
+package eis.appendixb.ultimate;
 
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
@@ -10,30 +7,7 @@ import org.junit.Before;
 import static org.hamcrest.MatcherAssert.assertThat; 
 import static org.hamcrest.Matchers.*;
 
-
-/* To run these tests from the command line, from folder /src:
- *
- *   javac -cp .:../libs/junit-4.12.jar:../libs/hamcrest-2.1.jar eis/tests/UnitTests.java
- *   java  -cp .:../libs/junit-4.12.jar:../libs/hamcrest-2.1.jar org.junit.runner.JUnitCore eis.tests.UnitTests
- */
-
-/* Obtaining code coverage with JaCoCo
- *  
- * Collecting data:
- *
- *   java -javaagent:../libs/jacocoagent.jar -cp .:../libs/junit-4.12.jar:../libs/hamcrest-core-1.3.jar org.junit.runner.JUnitCore eis.tests.UnitTests
- *
- * The previous step generates the file src/jacoco.exec.
- * If the previous doesn't work, consider updating the version of JaCoCo.
- * Then, generate the report in the "coverage" folder:
- *
- *   java -jar ../libs/jacococli.jar report jacoco.exec --classfiles . --sourcefiles . --html ../coverage/
- */
-
-
 /** Unit tests for water containers.
- *
- *  You can run them on a different version of Container by changing the first import line.
  *
  *  @author Marco Faella
  *  @version 1.0

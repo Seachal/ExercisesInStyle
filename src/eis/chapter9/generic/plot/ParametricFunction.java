@@ -10,15 +10,15 @@ public interface ParametricFunction {
     // Returns the number of parameters
     int getNParams();
     
-    // Sets the value of the i-th parameter to val
-    void setParam(int i, double val);
-    
-    // Returns the current value of the i-th parameter
-    double getParam(int i);
-    
     // Returns the name of the i-th parameter 
     String getParamName(int i);
 
+    // Returns the current value of the i-th parameter
+    double getParam(int i);
+
+    // Sets the value of the i-th parameter to val
+    void setParam(int i, double val);
+    
     // Returns the value of this function for the value x,
     // according to the current value of the parameters
     double eval(double x);
