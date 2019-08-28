@@ -47,6 +47,7 @@ public class Container {
      *  to satisfy the request.
      *
      *  @param amount the amount of water to be added 
+     *  @throws IllegalArgumentException if <code>amount</code> is negative and there's not enough water to satisfy the request
      */
     public void addWater(double amount) {
         Container root = findRootAndCompress();
@@ -63,7 +64,7 @@ public class Container {
 
    /** Connects this container with another.
     *
-    *  @param other The container that will be connected to this one
+    *  @param other the container that will be connected to this one
     */
     public void connectTo(Container other) {
         // Pre-condition check
