@@ -1,6 +1,7 @@
 package eis.chapter8.threads;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /** A water container, thread-safe.
  *  Uses per-group implicit monitors.
@@ -14,11 +15,11 @@ public class Container {
     private Group group = new Group(this);
 
     private static class Group {
-        static int nGroups;
+        final static AtomicInteger nGroups = new AtomicInteger();
         double amount;
         Set<Container> elems = new HashSet<>();
         // group ids ensure consistent ordering and avoid deadlocks
-        final int id = nGroups++;
+        final int id = nGroups.incrementAndGet();
 
         Group(Container c) {
             elems.add(c);

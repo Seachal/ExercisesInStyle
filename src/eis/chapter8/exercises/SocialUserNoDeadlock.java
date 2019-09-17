@@ -1,6 +1,7 @@
 package eis.chapter8.exercises;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Exercise 3 (solution): a user in a social network.
@@ -12,12 +13,11 @@ public class SocialUserNoDeadlock {
     private final String name;
     private final Set<SocialUserNoDeadlock> friends = new HashSet<>();
     private final int id;
-    private static int instanceCounter;
+    private final static AtomicInteger instanceCounter = new AtomicInteger();
 
     public SocialUserNoDeadlock(String name) {
         this.name = name;
-        this.id = instanceCounter;
-        instanceCounter++;
+        this.id = instanceCounter.incrementAndGet();
     }
 
     public void befriend(SocialUserNoDeadlock other) {
