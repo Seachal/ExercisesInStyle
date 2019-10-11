@@ -15,7 +15,7 @@ public class Container {
     private Group group = new Group(this);
 
     private static class Group {
-        final static AtomicInteger nGroups = new AtomicInteger();
+        static final AtomicInteger nGroups = new AtomicInteger();
         double amount;
         Set<Container> elems = new HashSet<>();
         // group ids ensure consistent ordering and avoid deadlocks

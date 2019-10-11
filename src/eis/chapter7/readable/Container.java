@@ -3,7 +3,7 @@ package eis.chapter7.readable;
 import java.util.*;
 
 /* To create HTML documentation, from the folder src/:
- *   javadoc -d ../docs eis/readable/Container.java
+ *   javadoc -d ../docs eis/chapter7/readable/Container.java
  */
 
 /** 
@@ -13,7 +13,7 @@ import java.util.*;
  *  Water can be added or removed.
  *  Two containers can be connected with a permanent pipe.
  *  When two containers are connected, directly or indirectly,
- *  they become communicating vessels and water will <b>distribute
+ *  they become communicating vessels, and water will <b>distribute
  *  equally</b> among all of them.
  *  <p>
  *  The set of all containers connected to this one is called the
