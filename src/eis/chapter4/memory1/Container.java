@@ -37,11 +37,11 @@ public class Container {
         for (Container x: group) x.amount = newAmount;
     }
     
-    public void addWater(double amount) {
+    public void addWater(float amount) {
         if (group==null) {
             this.amount += amount;
         } else {
-            double amountPerContainer = amount / group.size();
+            float amountPerContainer = amount / group.size();
             for (Container c: group)
                 c.amount += amountPerContainer;
         }

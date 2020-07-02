@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *  Partially wait-free version.
  *
  *  @author Marco Faella
- *  @version 1.0
+ *  @version 1.1
  */
 public class Container {
 
@@ -29,17 +29,17 @@ public class Container {
     public void connectTo(Container other) {
 
         while (true) {
-            if (group == other.group) return;
-            
             Object firstMonitor  = group.id<other.group.id ? group : other.group,
                    secondMonitor = group.id<other.group.id ? other.group : group;
 
+            // Check if they are already connected
+            if (firstMonitor == secondMonitor) return;
+
             synchronized (firstMonitor) {
                 synchronized (secondMonitor) {
-                    
-                    if ((firstMonitor  == group && secondMonitor == other.group) || 
+                    if ((firstMonitor  == group && secondMonitor == other.group) ||
                         (secondMonitor == group && firstMonitor  == other.group)) {
-
+                        // Groups are stable: perform the connection and exit
                         int size1 =       group.elems.size(),
                             size2 = other.group.elems.size();
                         double tot1 =       group.amount * size1,
